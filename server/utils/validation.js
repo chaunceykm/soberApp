@@ -15,6 +15,20 @@ const handleValidationErrors = (req, _res, next) => {
     next(0)
 }
 
+const userNotFoundError = (id) => {
+    const err = Error("User not found");
+    err.errors = [`User with id of ${id} could not be found.`];
+    err.title = "User not found.";
+    err.status = 404;
+    return err;
+  };
+  
+  const userIsFound = (type) => {
+    const err = Error('User found')
+    err.errors = [`The following ${type} has already been taken.`];
+    err.title = "User found";
+    return err;
+  }
 module.exports = {
-    handleValidationErrors,
+    handleValidationErrors, userNotFoundError, userIsFound
 }
