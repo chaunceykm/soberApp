@@ -4,9 +4,9 @@ const apiRouter = require("./api");
 
 router.use("/api", apiRouter);
 
-router.get("/helloWorld", function (req, res) {
+router.get("/welcome", function (req, res) {
   res.cookie("XSRF-TOKEN", req.csrfToken());
-  res.send("Hello World!");
+  res.send("Welcome to SobrietyToday!");
 });
 
 module.exports = router;
