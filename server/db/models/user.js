@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       lastUsed: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
         validate: {
           isDate: true,
         },
