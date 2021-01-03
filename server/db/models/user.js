@@ -47,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.JournalEntry, { as: "userId" });
-      User.hasMany(models.Goal, { as: 'userId'})
+      User.hasMany(models.JournalEntry, { foreignKey: "userId" });
+      User.hasMany(models.Goal, { foreignKey: "userId" });
     }
   }
   User.init(
@@ -87,7 +87,9 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+
     {
+      sequelize,
       defaultScope: {
         attributes: {
           exclude: ["hashedPassword", "email", "createdAt", "updatedAt"],
@@ -101,10 +103,6 @@ module.exports = (sequelize, DataTypes) => {
           attributes: {},
         },
       },
-    },
-
-    {
-      sequelize,
       modelName: "User",
     }
   );

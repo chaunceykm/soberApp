@@ -4,6 +4,7 @@ const { requireAuth } = require("../../utils/auth.js");
 
 const { User, Goal } = require("../../db/models");
 const { userNotFoundError } = require("../../utils/validation.js");
+const { Op } = require('sequelize');
 
 const router = express.Router();
 
